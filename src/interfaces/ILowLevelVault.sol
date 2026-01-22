@@ -12,6 +12,24 @@ interface ILowLevelVault is IERC20 {
         external
         returns (int256 deltaCollateral, int256 deltaBorrow);
 
+    function previewLowLevelRebalanceBorrow(int256 deltaBorrow)
+        external
+        view
+        returns (int256 deltaCollateral, int256 deltaShares);
+
+    function executeLowLevelRebalanceBorrow(int256 deltaBorrow)
+        external
+        returns (int256 deltaCollateral, int256 deltaShares);
+
+    function previewLowLevelRebalanceCollateral(int256 deltaCollateral)
+        external
+        view
+        returns (int256 deltaBorrow, int256 deltaShares);
+
+    function executeLowLevelRebalanceCollateral(int256 deltaCollateral)
+        external
+        returns (int256 deltaBorrow, int256 deltaShares);
+
     function asset() external view returns (address);
     function assetCollateral() external view returns (address);
 
